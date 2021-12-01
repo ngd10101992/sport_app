@@ -1,0 +1,85 @@
+Dự án: Hệ thống đăng ký danh sách đội thể thao
+Cho phép đăng ký và quản lý bất kỳ một trong các đội bóng rổ, bóng đá hoặc bóng chày và các thành viên.
+
+Yêu cầu:
+1. Khách có thể đăng ký với tư cách là người dùng
+Thông tin người dùng là mật khẩu email Số điện thoại (có gạch nối) Ngày sinh (chọn từ lịch)
+Có thể chỉnh sửa thông tin trên
+2. Quản trị viên có thể đăng ký với tư cách là người dùng
+Đăng ký người dùng khách
+Đăng ký người dùng quản trị viên
+Nội dung tương tự như người dùng trên có thể được đăng ký và chỉnh sửa bởi người dùng quản trị.
+Quản trị viên có thể liệt kê những người dùng chung và tìm kiếm theo số điện thoại email
+Quản trị viên có thể xóa quản trị viên và những người dùng trên, nhưng bản thân quản trị viên đã đăng nhập không thể xóa.
+3. Đăng nhập chức năng
+Bạn có thể đăng nhập bằng email và mật khẩu mà bạn đã đăng ký ở 1 và 2 ở trên.
+Mật khẩu có thể được đặt lại
+4. Đăng ký đội
+Nhóm quản trị viên và người dùng đã đăng ký có thể được đăng ký
+Đăng ký tên nhóm và các thành viên trong nhóm
+Các thành viên trong nhóm cần tên, số, chức vụ và tuổi
+Người dùng đã đăng ký có thể chỉnh sửa / xóa thông tin đội và thành viên trong nhóm do chính họ đăng ký.
+Người dùng đã đăng ký có thể liệt kê các đội mà họ đã đăng ký
+Các nhóm cũng có thể liệt kê từng thành viên trong nhóm trên trang chi tiết
+Danh sách các thành viên trong nhóm có thể được sắp xếp theo số lượng, tên và tuổi.
+Quản trị viên có thể chỉnh sửa tất cả các nhóm
+5. Xem đội
+Liệt kê các nhóm cho tất cả người dùng khách, người dùng đã đăng ký và quản trị viên
+Chức năng tìm kiếm theo tên nhóm
+Liệt kê thông tin thành viên trong nhóm trên trang chi tiết của nhóm
+6. Chức năng đầu ra CSV của thông tin nhóm
+Có thể xuất thông tin nhóm sang CSV
+
+sự chỉ rõ
+Khung: Laravel 8
+DB: MySQL hoặc MariaDB
+ENV: Đám mây Docker, xampp, Linux, AWS, v.v. có thể là bất cứ thứ gì.
+Nhận xét: Sử dụng Eloquent cho các truy vấn.
+
+
+練習プロジェクト
+
+Project: スポーツチームリスト登録システム
+バスケットボール、サッカーまたは野球チームのいずれか一つのチームとメンバーが登録管理出来るようにする。
+
+要件:
+1. ゲストがユーザー登録できること
+ユーザー情報はemail password 電話番号(ハイフン有り) 生年月日(カレンダーから選択)
+上記の情報を編集できること
+2. 管理者がユーザー登録できること
+ゲストユーザーの登録
+管理者ユーザーの登録
+管理者ユーザーも上記ユーザーと同じ内容を登録・編集可能とする
+管理者は一般ユーザーをリスト表示、email 電話番号で検索できること
+管理者は管理者および上記ユーザーを削除できること、しかしログイン中の管理者自身は消去不可
+3. ログイン機能
+上記1と2で登録したemailとパスワードでログインできること
+パスワードのリセットができること
+4. チームの登録
+管理者と登録ユーザーはチームが登録できること
+チーム名とチームメンバーを登録
+チームメンバーは名前、背番号、ポジション、年齢が必要
+登録ユーザーは自身で登録したチームとチームメンバー情報を編集・消去できること
+登録ユーザーは自身が登録したチームをリスト表示できること
+チームも詳細ページに各チームメンバーをリスト表示できること
+チームメンバーのリスト表示は背番号、名前、年齢でソートできること
+管理者はすべてのチームの編集ができること
+5. チームの表示
+ゲストユーザー、登録ユーザー、管理者のすべてにチームのリスト表示
+チーム名で検索機能
+チームの詳細ページでチームメンバー情報のリスト表示
+6. チーム情報のCSV出力機能
+チーム情報をCSVに出力できること
+
+仕様
+Framework: Laravel 8
+DB: MySQL or MariaDB
+ENV: Docker, xampp, Linux, AWS等のcloudなんでもいいです。
+コメント: クエリーはEloquentを使用してください。
+
+github等にこちらからコードが確認出来るようにしてください。
+
+他にもいろいろとありますが、とりあえずできるところまでやってみてください。
+質問があれば、メールで聞いてください。
+弊社の訪問時に一旦どこまで出来たのか確認させてください。
+どこが出来て出来ないのかが知りたいです。
