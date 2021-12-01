@@ -13,6 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Auth::routes();
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/team', [App\Http\Controllers\TeamController::class, 'index'])->name('team');
+
+Route::post('/team', [App\Http\Controllers\TeamController::class, 'add'])->name('team');
+
+Route::group(['prefix' => 'admin','middleware'=>'auth'], function() {
+    Route::get('/', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
 });
