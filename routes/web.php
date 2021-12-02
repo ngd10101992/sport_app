@@ -21,10 +21,14 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/team', [App\Http\Controllers\TeamController::class, 'index'])->name('team');
 
-Route::post('/team', [App\Http\Controllers\TeamController::class, 'add'])->name('team');
 
 Route::group(['prefix' => 'admin','middleware'=>'auth'], function() {
     Route::get('/', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
+});
+
+Route::group(['prefix' => 'users','middleware'=>'auth'], function() {
+    Route::get('/teams/{userId}', [App\Http\Controllers\UserController::class, 'getTeams'])->name('teams');
+
+    Route::post('teams/{userId}', [App\Http\Controllers\TeamController::class, 'add'])->name('teams');
 });
