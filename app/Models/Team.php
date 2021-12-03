@@ -9,4 +9,8 @@ class Team extends Model
 {
     use HasFactory;
     protected $fillable = ['name','user_id'];
+
+    public function members() {
+        return $this->hasmany(Member::class, 'team_id', 'id');
+    }
 }

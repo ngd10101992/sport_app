@@ -19,4 +19,9 @@ class TeamController extends Controller
         }
         return redirect()->back()->with('no', 'Add faile');
     }
+
+    public function getMembers($teamId) {
+        $Team = Team::find($teamId);
+        return view('team.members', compact('Team'));
+    } 
 }

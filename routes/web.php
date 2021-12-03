@@ -30,6 +30,8 @@ Route::group(['prefix' => 'admin','middleware'=>'auth'], function() {
 
 Route::group(['prefix' => 'users','middleware'=>'auth'], function() {
     Route::get('{userId}/teams/', [App\Http\Controllers\UserController::class, 'getTeams'])->name('user.teams.show');
+    Route::get('{userId}/teams/{teamId}', [App\Http\Controllers\TeamController::class, 'getMembers'])->name('user.member.show');
 
     Route::post('teams', [App\Http\Controllers\TeamController::class, 'add'])->name('user.teams.add');
+    Route::post('members', [App\Http\Controllers\MemberController::class, 'add'])->name('user.members.add');
 });
