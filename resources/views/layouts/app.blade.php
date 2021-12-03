@@ -31,9 +31,18 @@
                         @guest
 
                         @else
-                            <li class="nav-item active">
-                                <a class="nav-link" href="{{ route('teams', Auth::user()->id) }}">Teams</a>
-                            </li>
+                            @if (Auth::user()->role === '1')
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="{{ route('admin.teams.show') }}">Teams</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="{{ route('admin.users.show') }}">Users</a>
+                                </li>
+                            @else
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="{{ route('user.teams.show', Auth::user()->id) }}">Teams</a>
+                                </li>
+                            @endif
                         @endguest
                         
                     </ul>

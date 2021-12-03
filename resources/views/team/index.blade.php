@@ -12,7 +12,7 @@
             <h1 class="page-title">Teams Page</h1>
         </div>
         <div class="col-12 mb-4">
-            <form action="teams" method="POST">
+            <form action="{{ route('user.teams.add') }}" method="POST">
                 @csrf
                 <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                 <div class="form-group">

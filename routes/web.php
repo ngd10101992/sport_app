@@ -20,15 +20,16 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
+Route::get('admin/register', [App\Http\Controllers\AdminController::class, 'register'])->name('admin.register');
 
 Route::group(['prefix' => 'admin','middleware'=>'auth'], function() {
     Route::get('/', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
+    Route::get('teams/', [App\Http\Controllers\AdminController::class, 'getTeams'])->name('admin.teams.show');
+    Route::get('users/', [App\Http\Controllers\AdminController::class, 'getUsers'])->name('admin.users.show');
 });
 
 Route::group(['prefix' => 'users','middleware'=>'auth'], function() {
-    Route::get('/teams/{userId}', [App\Http\Controllers\UserController::class, 'getTeams'])->name('teams');
+    Route::get('{userId}/teams/', [App\Http\Controllers\UserController::class, 'getTeams'])->name('user.teams.show');
 
-    Route::post('teams/{userId}', [App\Http\Controllers\TeamController::class, 'add'])->name('teams');
+    Route::post('teams', [App\Http\Controllers\TeamController::class, 'add'])->name('user.teams.add');
 });
