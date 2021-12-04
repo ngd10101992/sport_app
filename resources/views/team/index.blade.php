@@ -30,7 +30,7 @@
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTmNu_ftzSIZ8THbnQ5s1ajwKKdWahEEmEOg&usqp=CAU" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title td-info" data-name="name">{{$team->name}}</h5>
-                        <a href="{{ route('user.member.show', [Auth::user()->id, $team->id]) }}" class="btn btn-info">Member</a>
+                        <a href="{{ route('user.members.show', [Auth::user()->id, $team->id]) }}" class="btn btn-info">Member</a>
                         <!-- Modal Edit -->
                         <button type="button" class="btn btn-warning text-white" data-toggle="modal" data-target="#editModal">Edit</button>
                         <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
@@ -50,7 +50,7 @@
                                                     <small class="help-block text-danger">{{$message}}</small>
                                                 @enderror
                                             </div>
-                                            <button type="submit" class="btn btn-primary btn-update" data-element-id="#team-{{$team->id}}" data-url="{{ route('user.teams.update') }}">Update</button>
+                                            <button type="submit" class="btn btn-primary btn-update" data-element-id="team-{{$team->id}}" data-url="{{ route('user.teams.update') }}">Update</button>
                                         </form>
                                     </div>
                                 </div>

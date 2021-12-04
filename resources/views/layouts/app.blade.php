@@ -115,7 +115,8 @@
                 data: data,
                 success: function(result) {
                     $('.close').click()
-                    $(`${elementId} .td-info`).each(function() {
+                    $(`#${elementId} .td-info`).each(function() {
+                        console.log($(this))
                         $(this).text(data[$(this).data('name')])
                     })
                 },

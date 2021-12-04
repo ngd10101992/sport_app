@@ -14,6 +14,11 @@ class TeamController extends Controller
     //     return view('home', compact('teams'));
     // }
 
+    public function getMembersNotLogin($teamId) {
+        $Team = Team::find($teamId);
+        return view('team.members', compact('Team'));
+    }
+
     public function getMembers($userId, $teamId) {
         $Team = Team::find($teamId);
         return view('team.members', compact('Team'));

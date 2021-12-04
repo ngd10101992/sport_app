@@ -12,7 +12,7 @@
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTmNu_ftzSIZ8THbnQ5s1ajwKKdWahEEmEOg&usqp=CAU" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{$team->name}}</h5>
-                        <a href="#" class="btn btn-info">member</a>
+                        <a href="{{ route('members.show', [$team->id]) }}" class="btn btn-info">Member</a>
                     </div>
                 </div>
             </div>
