@@ -43,6 +43,9 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Number</th>
+                    <th scope="col">Role</th>
                 </tr>
             </thead>
             <tbody>
@@ -50,6 +53,9 @@
                     <tr>
                         <th scope="row">{{$key}}</th>
                         <td>{{$member->name}}</td>
+                        <td>{{$member->age}}</td>
+                        <td>{{$member->number}}</td>
+                        <td>{{$member->role}}</td>
                     </tr>
                 @endforeach
             </tbody>

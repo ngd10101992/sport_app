@@ -25,14 +25,57 @@
             </form>
         </div>
         @foreach($user->teams as $key=>$team)
-            <div class="col-12 col-md-4">
+            <div id="team-{{$team->id}}" class="col-12 col-md-4">
                 <div class="card">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTmNu_ftzSIZ8THbnQ5s1ajwKKdWahEEmEOg&usqp=CAU" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">{{$team->name}}</h5>
-                        <a href="{{ route('user.member.show', [Auth::user()->id, $team->id]) }}" class="btn btn-info">member</a>
-                        <a href="#" class="btn btn-warning text-white">Edit</a>
-                        <a href="#" class="btn btn-danger">Remove</a>
+                        <h5 class="card-title team-title">{{$team->name}}</h5>
+                        <a href="{{ route('user.member.show', [Auth::user()->id, $team->id]) }}" class="btn btn-info">Member</a>
+                        <!-- Modal Edit -->
+                        <button type="button" class="btn btn-warning text-white" data-toggle="modal" data-target="#editModal">Edit</button>
+                        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <input type="hidden" class="form-control" name="team_id" value="{{$team->id}}">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="teamName" name="team_name" placeholder="Team Name" value="{{$team->name}}">
+                                                @error('team_name')
+                                                    <small class="help-block text-danger">{{$message}}</small>
+                                                @enderror
+                                            </div>
+                                            <button type="submit" class="btn btn-primary btn-update">Update</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End Modal Edit -->
+
+
+                        <!-- Modal Remove -->
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#removeModal">Remove</button>
+                        <div class="modal fade" id="removeModal" tabindex="-1" aria-labelledby="removeModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <button class="btn btn-danger w-100 btn-delete" data-id="{{$team->id}}">Remove</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End Modal Remove -->
                     </div>
                 </div>
             </div>

@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Ebisu') }}</title>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
@@ -90,5 +90,54 @@
             @yield('content')
         </main>
     </div>
+
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        })
+
+        $('.btn-update').click(function(e) {
+            e.preventDefault()
+            let name = $("input[name=team_name]").val();
+            let teamId = $("input[name=team_id]").val();
+            console.log(name)
+            console.log(teamId)
+            const data = {
+                'name': name,
+                'team_id': teamId
+            }
+            $.ajax({
+                url: "{{ route('user.teams.update') }}",
+                type: "PUT",
+                data: data,
+                success: function(result) {
+                    $('.close').click()
+                    setTimeout(() => {
+                        $(`#team-${teamId} .team-title`).text(result.data.name)
+                    }, 300);
+                },
+                error : function(error) {
+                    $('.close').click()
+                }
+            })
+
+        })
+
+        $('.btn-delete').click(function() {
+            let teamId = $(this).data( "id");
+            $.ajax({
+                url: "{{ url('users/teams') }}" + '/' + teamId,
+                type: "DELETE",
+                success: function(result) {
+                    $('.close').click()
+                    setTimeout(() => {
+                        $(`#team-${teamId}`).remove()
+                    }, 300);
+                }
+            })
+        })
+    </script>
 </body>
 </html>
