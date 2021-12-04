@@ -14,4 +14,21 @@ class MemberController extends Controller
         }
         return redirect()->back()->with('no', 'Add faile');
     }
+
+    public function update(TeamAddRequest $request) {
+        if (Member::where('id', $request->all()['id'])->update($request->all())) {
+            return response()->json([
+                'status' => true, 
+                'message' => 'Update successfully',
+            ]);
+        }
+        return response()->json(['status' => false, 'message' => 'Update fail']);
+    }
+
+    public function delete($id) {
+        if (Member::destroy((int)$id)) {
+            return response()->json(['status' => true, 'message' => 'Delete successfully']);
+        }
+        return response()->json(['status' => false, 'message' => 'Delete fail']);
+    }
 }

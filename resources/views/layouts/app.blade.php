@@ -100,22 +100,24 @@
 
         $('.btn-update').click(function(e) {
             e.preventDefault()
-            let name = $("input[name=team_name]").val();
-            let teamId = $("input[name=team_id]").val();
-            let url = $(this).data( "url");
-            const data = {
-                'name': name,
-                'team_id': teamId
-            }
+            let url = $(this).data( "url")
+            let elementId = $(this).data( "element-id")
+            const data = {}
+            const inputs = $(this).parent().find('input')
+
+            inputs.each(function() {
+                data[$(this).attr('name')] = $(this).val()
+            })
+            
             $.ajax({
                 url: url,
                 type: "PUT",
                 data: data,
                 success: function(result) {
                     $('.close').click()
-                    setTimeout(() => {
-                        $(`#team-${teamId} .team-title`).text(result.data.name)
-                    }, 300);
+                    $(`${elementId} .td-info`).each(function() {
+                        $(this).text(data[$(this).data('name')])
+                    })
                 },
                 error : function(error) {
                     $('.close').click()
@@ -125,7 +127,7 @@
         })
 
         $('.btn-delete').click(function() {
-            let teamId = $(this).data( "id");
+            let elementId = $(this).data( "element-id");
             let url = $(this).data( "url");
             $.ajax({
                 url: url,
@@ -133,7 +135,7 @@
                 success: function(result) {
                     $('.close').click()
                     setTimeout(() => {
-                        $(`#team-${teamId}`).remove()
+                        $(elementId).remove()
                     }, 300);
                 }
             })

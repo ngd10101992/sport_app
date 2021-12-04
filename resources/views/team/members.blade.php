@@ -46,16 +46,90 @@
                     <th scope="col">Age</th>
                     <th scope="col">Number</th>
                     <th scope="col">Role</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Remove</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($Team->members as $key=>$member)
-                    <tr>
+                    <tr id="member-{{$member->id}}">
                         <th scope="row">{{$key}}</th>
-                        <td>{{$member->name}}</td>
-                        <td>{{$member->age}}</td>
-                        <td>{{$member->number}}</td>
-                        <td>{{$member->role}}</td>
+                        <td class="td-info" data-name="name">{{$member->name}}</td>
+                        <td class="td-info" data-name="age">{{$member->age}}</td>
+                        <td class="td-info" data-name="number">{{$member->number}}</td>
+                        <td class="td-info" data-name="role">{{$member->role}}</td>
+                        <!-- Modal Edit -->
+                        <td>
+                            <button type="button" class="btn btn-warning text-white" data-toggle="modal" data-target="#editModal">Edit</button>
+                            <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <input type="hidden" class="form-control" name="id" value="{{$member->id}}">
+
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" id="memberName" name="name" placeholder="Name" value="{{$member->name}}">
+                                                    @error('name')
+                                                        <small class="help-block text-danger">{{$message}}</small>
+                                                    @enderror
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" id="memberAge" name="age" placeholder="Age" value="{{$member->age}}">
+                                                    @error('age')
+                                                        <small class="help-block text-danger">{{$message}}</small>
+                                                    @enderror
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" id="memberNumber" name="number" placeholder="Number" value="{{$member->number}}">
+                                                    @error('number')
+                                                        <small class="help-block text-danger">{{$message}}</small>
+                                                    @enderror
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" id="memberRole" name="role" placeholder="Role" value="{{$member->role}}">
+                                                    @error('role')
+                                                        <small class="help-block text-danger">{{$message}}</small>
+                                                    @enderror
+                                                </div>
+
+                                                <button type="submit" class="btn btn-primary btn-update" data-element-id="#member-{{$member->id}}" data-url="{{ route('user.members.update') }}">Update</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <!--End Modal Edit -->
+
+
+                        <!-- Modal Remove -->
+                        <td>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#removeModal">Remove</button>
+                            <div class="modal fade" id="removeModal" tabindex="-1" aria-labelledby="removeModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <button class="btn btn-danger w-100 btn-delete" data-element-id="#member-{{$member->id}}" data-url="{{ route('user.members.delete', [$member->id]) }}">Remove</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <!--End Modal Remove -->
                     </tr>
                 @endforeach
             </tbody>

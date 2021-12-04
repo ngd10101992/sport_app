@@ -36,6 +36,8 @@ Route::group(['prefix' => 'users','middleware'=>'auth'], function() {
     Route::post('members', [App\Http\Controllers\MemberController::class, 'add'])->name('user.members.add');
 
     Route::delete('teams/{id}', [App\Http\Controllers\TeamController::class, 'delete'])->name('user.teams.delete');
+    Route::delete('members/{id}', [App\Http\Controllers\MemberController::class, 'delete'])->name('user.members.delete');
 
     Route::put('teams', [App\Http\Controllers\TeamController::class, 'update'])->name('user.teams.update');
+    Route::put('members', [App\Http\Controllers\MemberController::class, 'update'])->name('user.members.update');
 });

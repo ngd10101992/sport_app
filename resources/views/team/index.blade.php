@@ -29,7 +29,7 @@
                 <div class="card">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTmNu_ftzSIZ8THbnQ5s1ajwKKdWahEEmEOg&usqp=CAU" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title team-title">{{$team->name}}</h5>
+                        <h5 class="card-title td-info" data-name="name">{{$team->name}}</h5>
                         <a href="{{ route('user.member.show', [Auth::user()->id, $team->id]) }}" class="btn btn-info">Member</a>
                         <!-- Modal Edit -->
                         <button type="button" class="btn btn-warning text-white" data-toggle="modal" data-target="#editModal">Edit</button>
@@ -43,14 +43,14 @@
                                     </div>
                                     <div class="modal-body">
                                         <form>
-                                            <input type="hidden" class="form-control" name="team_id" value="{{$team->id}}">
+                                            <input type="hidden" class="form-control" name="id" value="{{$team->id}}">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" id="teamName" name="team_name" placeholder="Team Name" value="{{$team->name}}">
-                                                @error('team_name')
+                                                <input type="text" class="form-control" id="teamName" name="name" placeholder="Team Name" value="{{$team->name}}">
+                                                @error('name')
                                                     <small class="help-block text-danger">{{$message}}</small>
                                                 @enderror
                                             </div>
-                                            <button type="submit" class="btn btn-primary btn-update" data-url="{{ route('user.teams.update') }}">Update</button>
+                                            <button type="submit" class="btn btn-primary btn-update" data-element-id="#team-{{$team->id}}" data-url="{{ route('user.teams.update') }}">Update</button>
                                         </form>
                                     </div>
                                 </div>
@@ -70,7 +70,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <button class="btn btn-danger w-100 btn-delete" data-id="{{$team->id}}" data-url="{{ route('user.teams.delete', [$team->id]) }}">Remove</button>
+                                        <button class="btn btn-danger w-100 btn-delete" data-element-id="#team-{{$team->id}}" data-url="{{ route('user.teams.delete', [$team->id]) }}">Remove</button>
                                     </div>
                                 </div>
                             </div>
