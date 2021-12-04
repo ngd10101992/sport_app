@@ -102,14 +102,13 @@
             e.preventDefault()
             let name = $("input[name=team_name]").val();
             let teamId = $("input[name=team_id]").val();
-            console.log(name)
-            console.log(teamId)
+            let url = $(this).data( "url");
             const data = {
                 'name': name,
                 'team_id': teamId
             }
             $.ajax({
-                url: "{{ route('user.teams.update') }}",
+                url: url,
                 type: "PUT",
                 data: data,
                 success: function(result) {
@@ -127,8 +126,9 @@
 
         $('.btn-delete').click(function() {
             let teamId = $(this).data( "id");
+            let url = $(this).data( "url");
             $.ajax({
-                url: "{{ url('users/teams') }}" + '/' + teamId,
+                url: url,
                 type: "DELETE",
                 success: function(result) {
                     $('.close').click()
