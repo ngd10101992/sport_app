@@ -27,6 +27,8 @@ Route::group(['prefix' => 'admin','middleware'=>'auth'], function() {
     Route::get('/', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
     Route::get('teams/', [App\Http\Controllers\AdminController::class, 'getTeams'])->name('admin.teams.show');
     Route::get('users/', [App\Http\Controllers\AdminController::class, 'getUsers'])->name('admin.users.show');
+
+    Route::delete('users/{id}', [App\Http\Controllers\AdminController::class, 'deleteUser'])->name('admin.users.delete');
 });
 
 Route::group(['prefix' => 'users','middleware'=>'auth'], function() {

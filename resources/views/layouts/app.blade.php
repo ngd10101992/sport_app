@@ -124,7 +124,6 @@
                     $('.close').click()
                 }
             })
-
         })
 
         $('.btn-delete').click(function() {

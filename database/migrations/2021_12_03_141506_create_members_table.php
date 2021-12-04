@@ -21,7 +21,7 @@ class CreateMembersTable extends Migration
             $table->string('number');
             $table->string('role');
             $table->timestamps();
-            $table->foreign('team_id')->references('id')->on('teams');
+            $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');
         });
     }
 

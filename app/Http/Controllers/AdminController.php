@@ -27,4 +27,11 @@ class AdminController extends Controller
         $users = User::paginate(10);
         return view('admin.users', compact('users'));
     } 
+
+    public function deleteUser($userId) {
+        if (User::destroy((int)$userId)) {
+            return response()->json(['status' => true, 'message' => 'Delete successfully']);
+        }
+        return response()->json(['status' => false, 'message' => 'Delete fail']);
+    } 
 }

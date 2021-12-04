@@ -32,7 +32,6 @@ class TeamController extends Controller
     }
 
     public function delete($id) {
-        $deleteMembers = Member::where('team_id', (int)$id)->delete();
         if (Team::destroy((int)$id)) {
             return response()->json(['status' => true, 'message' => 'Delete successfully']);
         }
