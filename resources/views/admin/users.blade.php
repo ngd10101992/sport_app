@@ -10,9 +10,9 @@
             <form action="{{ route('admin.users.search') }}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <input type="text" class="form-control" name="search" placeholder="Email or phone">
+                    <input type="text" class="form-control form-control-search" name="search" placeholder="Email or phone">
                 </div>
-                <button type="submit" class="btn btn-primary">Search</button>
+                <button type="submit" class="btn btn-primary btn-basic btn-search">Search</button>
             </form>
         </div>
         <div class="col-12">

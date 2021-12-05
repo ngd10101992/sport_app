@@ -18,6 +18,7 @@
 </head>
 <body>
     <div id="app">
+        <div class="app-background"></div>
         <nav id="navbar" class="navbar navbar-expand-md navbar-light">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">

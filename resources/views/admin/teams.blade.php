@@ -11,23 +11,23 @@
                 @csrf
                 <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="teamName" name="name" placeholder="Team Name">
+                    <input type="text" class="form-control form-control-search" id="teamName" name="name" placeholder="Team Name">
                     @error('name')
                         <small class="help-block text-danger">{{$message}}</small>
                     @enderror
                 </div>
-                <button type="submit" class="btn btn-primary">Add team</button>
+                <button type="submit" class="btn btn-primary btn-basic btn-search">Add team</button>
             </form>
         </div>
         @foreach($teams as $key=>$team)
             <div id="team-{{$team->id}}" class="col-12 col-md-4 mb-4">
                 <div class="card">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTmNu_ftzSIZ8THbnQ5s1ajwKKdWahEEmEOg&usqp=CAU" class="card-img-top" alt="...">
+                    <img src="{{ asset('images/teams-vecto.jpg') }}" />
                     <div class="card-body">
                         <h5 class="card-title td-info" data-name="name">{{$team->name}}</h5>
-                        <a href="{{ route('user.members.show', [Auth::user()->id, $team->id]) }}" class="btn btn-info">Member</a>
+                        <a href="{{ route('user.members.show', [Auth::user()->id, $team->id]) }}" class="btn btn-info btn-basic">Member</a>
                         <!-- Modal Edit -->
-                        <button type="button" class="btn btn-warning text-white" data-toggle="modal" data-target="#editModal">Edit</button>
+                        <button type="button" class="btn btn-warning text-white btn-basic btn-edit" data-toggle="modal" data-target="#editModal">Edit</button>
                         <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -55,7 +55,7 @@
 
 
                         <!-- Modal Remove -->
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#removeModal">Remove</button>
+                        <button type="button" class="btn btn-danger btn-basic btn-remove" data-toggle="modal" data-target="#removeModal">Remove</button>
                         <div class="modal fade" id="removeModal" tabindex="-1" aria-labelledby="removeModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">

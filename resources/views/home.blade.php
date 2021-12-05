@@ -7,18 +7,18 @@
             <form action="{{ route('teams.search') }}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <input type="text" class="form-control" name="search" placeholder="Team name">
+                    <input type="text" class="form-control form-control-search" name="search" placeholder="Team name">
                 </div>
-                <button type="submit" class="btn btn-primary">Search</button>
+                <button type="submit" class="btn btn-primary btn-basic btn-search">Search</button>
             </form>
         </div>
         @foreach($teams as $key=>$team)
             <div class="col-12 col-md-4 mb-5">
                 <div class="card">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTmNu_ftzSIZ8THbnQ5s1ajwKKdWahEEmEOg&usqp=CAU" class="card-img-top" alt="...">
+                    <img src="{{ asset('images/teams-vecto.jpg') }}" />
                     <div class="card-body">
                         <h5 class="card-title">{{$team->name}}</h5>
-                        <a href="{{ route('members.show', [$team->id]) }}" class="btn btn-info">Member</a>
+                        <a href="{{ route('members.show', [$team->id]) }}" class="btn btn-info btn-basic">Member</a>
                     </div>
                 </div>
             </div>

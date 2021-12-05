@@ -11295,11 +11295,60 @@ body {
   color: #1c1649e6;
 }
 
-#app {
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5)), url(https://images5.alphacoders.com/324/thumb-1920-324019.jpg);
+#app .btn-basic {
+  border-radius: 30px;
+  padding: 10px 45px;
+  background-color: #4142f2;
+  border: none;
+  box-shadow: #4142f291 0px 8px 24px;
+  transition: 0.3s ease;
+  display: block;
+  margin: 0 auto 20px;
+  width: 180px;
+}
+#app .btn-basic:hover {
+  background-color: #f27f41;
+  box-shadow: #f27f41 0px 8px 24px;
+}
+#app .btn-edit {
+  background-color: #e7b733;
+  box-shadow: #e7b733 0px 8px 24px;
+}
+#app .btn-remove {
+  background-color: #e22b2b;
+  box-shadow: #e22b2b 0px 8px 24px;
+}
+#app .form-control-search {
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  height: 55px;
+}
+#app .btn-search {
+  border-radius: 3px;
+  padding: 10px 15px;
+}
+#app .card {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border: none;
+}
+#app .card-body {
+  text-align: center;
+  padding: 40px 20px;
+}
+#app .card-title {
+  margin-bottom: 30px;
+}
+#app .app-background {
+  background-image: url(https://www.kindpng.com/picc/m/670-6701093_abstract-running-transparent-background-colored-sports-vector-png.png);
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  background-size: contain;
+  background-position: left;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 #app .page-title {
   text-align: center;
@@ -11358,7 +11407,7 @@ body {
   content: none;
 }
 #app .main {
-  padding-top: 150px;
+  padding-top: 300px;
   padding-bottom: 70px;
   min-height: 100vh;
 }
