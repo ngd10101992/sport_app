@@ -28,6 +28,13 @@ class AdminController extends Controller
         return view('admin.users', compact('users'));
     } 
 
+    public function getUsersByEmailOrPhone(Request $request) {
+        $users = User::where('email', $request->all()['search'])
+                        ->orWhere('phone', $request->all()['search'])
+                        ->get();
+        return view('admin.users', compact('users'));
+    } 
+
     public function deleteUser($userId) {
         if (User::destroy((int)$userId)) {
             return response()->json(['status' => true, 'message' => 'Delete successfully']);

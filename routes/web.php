@@ -30,6 +30,8 @@ Route::group(['prefix' => 'admin','middleware'=>'auth'], function() {
     Route::get('teams/', [App\Http\Controllers\AdminController::class, 'getTeams'])->name('admin.teams.show');
     Route::get('users/', [App\Http\Controllers\AdminController::class, 'getUsers'])->name('admin.users.show');
 
+    Route::post('users/search', [App\Http\Controllers\AdminController::class, 'getUsersByEmailOrPhone'])->name('admin.users.search');
+
     Route::delete('users/{id}', [App\Http\Controllers\AdminController::class, 'deleteUser'])->name('admin.users.delete');
 });
 
