@@ -2,11 +2,6 @@
 
 @section('content')
 <div class="container">
-    @if(Session::has('yes'))
-        <div class="alert alert-success" role="alert">
-        {{Session::get('yes')}}
-        </div>
-    @endif
     <div class="row">
         <div class="col-12">
             <h1 class="page-title">Teams Page</h1>
@@ -23,6 +18,11 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Add team</button>
             </form>
+            @if(Session::has('yes'))
+                <div class="alert alert-success mt-3" role="alert">
+                    {{Session::get('yes')}}
+                </div>
+            @endif
         </div>
         @foreach($user->teams as $key=>$team)
             <div id="team-{{$team->id}}" class="col-12 col-md-4 mb-5">

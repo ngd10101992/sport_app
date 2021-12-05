@@ -23,6 +23,8 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('admin/register', [App\Http\Controllers\AdminController::class, 'register'])->name('admin.register');
 Route::get('teams/{teamId}', [App\Http\Controllers\TeamController::class, 'getMembersNotLogin'])->name('members.show');
 
+Route::post('teams', [App\Http\Controllers\HomeController::class, 'getTeamsBySlug'])->name('teams.search');
+
 Route::group(['prefix' => 'admin','middleware'=>'auth'], function() {
     Route::get('/', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
     Route::get('teams/', [App\Http\Controllers\AdminController::class, 'getTeams'])->name('admin.teams.show');

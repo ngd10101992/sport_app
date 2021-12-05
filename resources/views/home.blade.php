@@ -4,7 +4,13 @@
 <div class="container">
     <div class="row">
         <div class="col-12 mb-4">
-            <h1 class="page-title">Home Page</h1>
+            <form action="{{ route('teams.search') }}" method="POST">
+                @csrf
+                <div class="form-group">
+                    <input type="text" class="form-control" name="search" placeholder="Team name">
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
         </div>
         @foreach($teams as $key=>$team)
             <div class="col-12 col-md-4 mb-5">

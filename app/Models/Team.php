@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Team extends Model
 {
     use HasFactory;
-    protected $fillable = ['name','user_id'];
+    protected $fillable = ['name','user_id','slug'];
 
     public function members() {
         return $this->hasMany(Member::class, 'team_id', 'id');

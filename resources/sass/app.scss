@@ -17,7 +17,7 @@ body {
 }
 
 #app {
-    background-image: linear-gradient(to bottom, white , transparent), url(https://images5.alphacoders.com/324/thumb-1920-324019.jpg);
+    background-image: linear-gradient(to bottom, white , rgba(255,255,255,0.2)), url(https://images5.alphacoders.com/324/thumb-1920-324019.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -86,6 +86,7 @@ body {
     .main {
         padding-top: 150px;
         padding-bottom: 70px;
+        min-height: 100vh;
     }
 }
 

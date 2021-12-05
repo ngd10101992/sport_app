@@ -31,7 +31,10 @@ class TeamController extends Controller
     } 
 
     public function add(TeamAddRequest $request) {
-        if (Team::create($request->all())) {
+        
+        $data = $request->all();
+        $data['slug'] = $this->createSlug($data['name']);
+        if (Team::create($data)) {
             return redirect()->back()->with('yes', 'Add succesfully');
         }
         return redirect()->back()->with('no', 'Add faile');

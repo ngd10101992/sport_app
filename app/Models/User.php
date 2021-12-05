@@ -45,6 +45,6 @@ class User extends Authenticatable
     ];
 
     public function teams() {
-        return $this->hasmany(Team::class, 'user_id', 'id');
+        return $this->hasMany(Team::class, 'user_id', 'id')->orderBy('created_at', 'desc');
     }
 }

@@ -16,4 +16,10 @@ class HomeController extends Controller
         $teams = Team::paginate(10);
         return view('home', compact('teams'));
     }
+
+    public function getTeamsBySlug(Request $request) {
+        $slug = $this->createSlug($request->all()['search']);
+        $teams = Team::where('slug', $slug)->get();
+        return view('home', compact('teams'));
+    }
 }
