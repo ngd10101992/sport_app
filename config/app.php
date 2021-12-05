@@ -13,7 +13,8 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Ebisu'),
+    // 'name' => env('APP_NAME', 'Teams sports'),
+    'name' =>'Teams Sports',
 
     /*
     |--------------------------------------------------------------------------

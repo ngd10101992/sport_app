@@ -25,7 +25,7 @@
             </form>
         </div>
         @foreach($user->teams as $key=>$team)
-            <div id="team-{{$team->id}}" class="col-12 col-md-4">
+            <div id="team-{{$team->id}}" class="col-12 col-md-4 mb-5">
                 <div class="card">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTmNu_ftzSIZ8THbnQ5s1ajwKKdWahEEmEOg&usqp=CAU" class="card-img-top" alt="...">
                     <div class="card-body">

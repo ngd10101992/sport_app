@@ -30,3 +30,17 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+
+$(function(){
+    $(window).scroll(function(){
+        let scrollTop = $(this).scrollTop()
+        let navbar = $('#navbar')
+        var navbarHeight = navbar.height();
+        if (scrollTop >= navbarHeight ) {
+            navbar.css('background', 'white')
+        } else {
+            navbar.css('background', 'transparent')
+        }
+    })
+})

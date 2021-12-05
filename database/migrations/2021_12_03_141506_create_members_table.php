@@ -16,9 +16,9 @@ class CreateMembersTable extends Migration
         Schema::create('members', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('age');
+            $table->integer('age');
             $table->unsignedInteger('team_id');
-            $table->string('number');
+            $table->integer('number');
             $table->string('role');
             $table->timestamps();
             $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');

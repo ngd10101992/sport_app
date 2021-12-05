@@ -14,14 +14,20 @@ class TeamController extends Controller
     //     return view('home', compact('teams'));
     // }
 
-    public function getMembersNotLogin($teamId) {
+    public function getMembersNotLogin($teamId, Request $request) {
         $Team = Team::find($teamId);
-        return view('team.members', compact('Team'));
+        $order = $request->has('order') ? $request->input('order') : 'name';
+        $members = Team::find($teamId)->members()->orderBy($order)->get();
+
+        return view('team.members', compact('Team', 'members'));
     }
 
-    public function getMembers($userId, $teamId) {
+    public function getMembers($userId, $teamId, Request $request) {
         $Team = Team::find($teamId);
-        return view('team.members', compact('Team'));
+        $order = $request->has('order') ? $request->input('order') : 'name';
+        $members = Team::find($teamId)->members()->orderBy($order)->get();
+
+        return view('team.members', compact('Team', 'members'));
     } 
 
     public function add(TeamAddRequest $request) {
