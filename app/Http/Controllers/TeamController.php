@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\TeamAddRequest;
+use App\Exports\ExportMembers;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Team;
 use App\Models\Member;
 
@@ -60,5 +62,12 @@ class TeamController extends Controller
             ]);
         }
         return response()->json(['status' => false, 'message' => 'Update fail']);
+    }
+
+    public function exportTeamInfoCsvFile( $teamId, Request $request) {
+
+        // return Excel::download(new ExportMembers, 'teams.csv');
+
+        return (new Excel())::download(new ExportMembers($teamId), 'teams.csv');
     }
 }

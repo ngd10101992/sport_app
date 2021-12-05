@@ -22,6 +22,7 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('admin/register', [App\Http\Controllers\AdminController::class, 'register'])->name('admin.register');
 Route::get('teams/{teamId}', [App\Http\Controllers\TeamController::class, 'getMembersNotLogin'])->name('members.show');
+Route::get('teams/export/{id}', [App\Http\Controllers\TeamController::class, 'exportTeamInfoCsvFile'])->name('teams.export');
 
 Route::post('teams', [App\Http\Controllers\HomeController::class, 'getTeamsBySlug'])->name('teams.search');
 

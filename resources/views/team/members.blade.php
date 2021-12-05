@@ -6,7 +6,11 @@
         <div class="col-12 mb-4">
             <h1 class="page-title">Members of team {{$Team->name}}</h1>
         </div>
-        @guest
+        <div class="col-12 mb-4">
+            <!-- <span data-href="{{ route('teams.export', [$Team->id]) }}" id="export" class="btn btn-success">Export</span> -->
+            <a class="btn btn-info" href="{{ route('teams.export', [$Team->id]) }}">Export File</a>
+        </div>
+        @guest  
 
         @else
             <div class="col-12 col-md-4 mb-4">
