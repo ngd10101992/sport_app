@@ -56,6 +56,10 @@ body {
     .card {
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         border: none;
+        transition: 0.3s ease;
+        &:hover {
+            transform: translateY(-15px);
+        }
     }
     .card-body {
         text-align: center;
