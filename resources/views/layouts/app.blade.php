@@ -75,6 +75,9 @@
                                     <a class="dropdown-item" href="{{ route('user.profile', [Auth::user()->id]) }}">
                                         {{ __('Profile') }}
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('user.password', [Auth::user()->id]) }}">
+                                        {{ __('Password') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -107,7 +110,8 @@
         $('.btn-update').click(function(e) {
             e.preventDefault()
             let url = $(this).data( "url")
-            let elementId = $(this).data( "element-id")
+            let elementId = $(this).data("element-id")
+            let removeValue = $(this).data("remove-value")
             const data = {}
             const inputs = $(this).parent().find('input')
 
@@ -122,12 +126,28 @@
                 success: function(result) {
                     $('.close').click()
                     $(`#${elementId} .td-info`).each(function() {
-                        console.log($(this))
                         $(this).text(data[$(this).data('name')])
                     })
+                    if (removeValue) {
+                        console.log(result)
+                        if (result.status) {
+                            $(`#${elementId} .form-control-password`).each(function() {
+                                $(this).val('')
+                            })
+                            $('.show-success').text(result.message)
+                            $('.show-success').css('display', 'block')
+                            $('.show-error').css('display', 'none')
+                        } else {
+                            $('.show-error').text(result.message)
+                            $('.show-error').css('display', 'block')
+                            $('.show-success').css('display', 'none')
+                        }
+                    }
                 },
                 error : function(error) {
                     $('.close').click()
+                    $('.show-error').text(error.responseJSON.message)
+                    $('.show-error').css('display', 'block')
                 }
             })
         })

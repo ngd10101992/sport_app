@@ -40,6 +40,7 @@ Route::group(['prefix' => 'users','middleware'=>'auth'], function() {
     Route::get('{userId}/teams/', [App\Http\Controllers\UserController::class, 'getTeams'])->name('user.teams.show');
     Route::get('{userId}/teams/{teamId}', [App\Http\Controllers\TeamController::class, 'getMembers'])->name('user.members.show');
     Route::get('{userId}/profile', [App\Http\Controllers\UserController::class, 'profile'])->name('user.profile');
+    Route::get('{userId}/password', [App\Http\Controllers\UserController::class, 'password'])->name('user.password');
 
     Route::post('teams', [App\Http\Controllers\TeamController::class, 'add'])->name('user.teams.add');
     Route::post('members', [App\Http\Controllers\MemberController::class, 'add'])->name('user.members.add');
@@ -50,4 +51,5 @@ Route::group(['prefix' => 'users','middleware'=>'auth'], function() {
     Route::put('teams', [App\Http\Controllers\TeamController::class, 'update'])->name('user.teams.update');
     Route::put('members', [App\Http\Controllers\MemberController::class, 'update'])->name('user.members.update');
     Route::put('profiles', [App\Http\Controllers\UserController::class, 'update'])->name('user.profiles.update');
+    Route::put('password', [App\Http\Controllers\UserController::class, 'updatePassword'])->name('user.password.update');
 });

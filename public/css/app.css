@@ -11295,6 +11295,11 @@ body {
   color: #1c1649e6;
 }
 
+#app .show-error, #app .show-success {
+  display: none;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
 #app .btn-basic {
   border-radius: 30px;
   padding: 10px 45px;
@@ -11322,6 +11327,7 @@ body {
   border: none;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   height: 55px;
+  padding-left: 35px;
 }
 #app .btn-search {
   border-radius: 3px;
