@@ -19,6 +19,6 @@ class ExportMembers implements FromQuery {
     // }
 
     public function query() {
-        return Member::query()->where('team_id', $this->teamId);
+        return Member::query()->where('team_id', $this->teamId)->select('name', 'age', 'number', 'position');
     }
 }

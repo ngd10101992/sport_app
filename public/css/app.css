@@ -11345,6 +11345,9 @@ body {
   background-color: #4142f2;
   color: white;
 }
+#app .card-basic .card-body::before {
+  content: none;
+}
 #app .card {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border: none;

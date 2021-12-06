@@ -27,8 +27,8 @@
                         <h5 class="card-title td-info" data-name="name">{{$team->name}}</h5>
                         <a href="{{ route('user.members.show', [Auth::user()->id, $team->id]) }}" class="btn btn-info btn-basic">Member</a>
                         <!-- Modal Edit -->
-                        <button type="button" class="btn btn-warning btn-basic btn-edit" data-toggle="modal" data-target="#editModal">Edit</button>
-                        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                        <button type="button" class="btn btn-warning btn-basic btn-edit" data-toggle="modal" data-target="#editModal-{{$team->id}}">Edit</button>
+                        <div class="modal fade" id="editModal-{{$team->id}}" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -40,7 +40,7 @@
                                         <form>
                                             <input type="hidden" class="form-control" name="id" value="{{$team->id}}">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" id="teamName" name="name" placeholder="Team Name" value="{{$team->name}}">
+                                                <input type="text" class="form-control" id="team-{{$team->id}}" name="name" placeholder="Team Name" value="{{$team->name}}">
                                                 @error('name')
                                                     <small class="help-block text-danger">{{$message}}</small>
                                                 @enderror
