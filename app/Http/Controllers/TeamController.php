@@ -27,9 +27,13 @@ class TeamController extends Controller
     public function getMembers($userId, $teamId, Request $request) {
         $Team = Team::find($teamId);
         $order = $request->has('order') ? $request->input('order') : 'name';
-        $members = Team::find($teamId)->members()->orderBy($order)->get();
+        
+        if (Team::find($teamId)) {
+            $members = Team::find($teamId)->members()->orderBy($order)->get();
+            return view('team.members', compact('Team', 'members'));
+        }
 
-        return view('team.members', compact('Team', 'members'));
+        return abort(404);
     } 
 
     public function add(TeamAddRequest $request) {

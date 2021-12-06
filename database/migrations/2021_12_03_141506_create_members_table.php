@@ -19,7 +19,7 @@ class CreateMembersTable extends Migration
             $table->integer('age');
             $table->unsignedInteger('team_id');
             $table->integer('number');
-            $table->string('role');
+            $table->string('position');
             $table->timestamps();
             $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');
         });

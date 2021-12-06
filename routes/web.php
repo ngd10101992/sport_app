@@ -26,7 +26,7 @@ Route::get('teams/export/{id}', [App\Http\Controllers\TeamController::class, 'ex
 
 Route::post('teams', [App\Http\Controllers\HomeController::class, 'getTeamsBySlug'])->name('teams.search');
 
-Route::group(['prefix' => 'admin','middleware'=>'auth'], function() {
+Route::group(['prefix' => 'admin','middleware'=> 'auth', 'middleware'=> 'role'], function() {
     Route::get('/', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
     Route::get('teams/', [App\Http\Controllers\AdminController::class, 'getTeams'])->name('admin.teams.show');
     Route::get('users/', [App\Http\Controllers\AdminController::class, 'getUsers'])->name('admin.users.show');
@@ -34,6 +34,8 @@ Route::group(['prefix' => 'admin','middleware'=>'auth'], function() {
     Route::post('users/search', [App\Http\Controllers\AdminController::class, 'getUsersByEmailOrPhone'])->name('admin.users.search');
 
     Route::delete('users/{id}', [App\Http\Controllers\AdminController::class, 'deleteUser'])->name('admin.users.delete');
+
+    Route::put('users', [App\Http\Controllers\AdminController::class, 'updateUser'])->name('admin.users.update');
 });
 
 Route::group(['prefix' => 'users','middleware'=>'auth'], function() {

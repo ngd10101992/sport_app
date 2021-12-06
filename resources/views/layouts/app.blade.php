@@ -23,7 +23,6 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js" integrity="sha512-k6/Bkb8Fxf/c1Tkyl39yJwcOZ1P4cRrJu77p83zJjN2Z55prbFHxPs9vN7q3l3+tSMGPDdoH51AEU8Vgo1cgAA==" crossorigin="anonymous"></script>
     
-
 </head>
 <body>
     <div id="app">
@@ -140,7 +139,12 @@
                 success: function(result) {
                     $('.close').click()
                     $(`#${elementId} .td-info`).each(function() {
-                        $(this).text(data[$(this).data('name')])
+                        
+                        if ($(this).data('name') === 'role') {
+                            $(this).text(data[$(this).data('name')] == 1 ? 'Admin' : 'User')
+                        } else {
+                            $(this).text(data[$(this).data('name')])
+                        }
                     })
                     if (removeValue) {
                         if (result.status) {

@@ -36,8 +36,8 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="memberRole" name="role" placeholder="Role">
-                        @error('role')
+                        <input type="text" class="form-control" id="memberPosition" name="position" placeholder="Position">
+                        @error('position')
                             <small class="help-block text-danger">{{$message}}</small>
                         @enderror
                     </div>
@@ -64,7 +64,7 @@
                             <a href="{{ route('members.show', [$Team->id, 'order' => 'number']) }}">Number</a>
                         </th>
                         <th scope="col">
-                            Role
+                            Position
                         </th>
                         @guest
                             
@@ -81,13 +81,13 @@
                             <td class="td-info" data-name="name">{{$member->name}}</td>
                             <td class="td-info" data-name="age">{{$member->age}}</td>
                             <td class="td-info" data-name="number">{{$member->number}}</td>
-                            <td class="td-info" data-name="role">{{$member->role}}</td>
+                            <td class="td-info" data-name="position">{{$member->position}}</td>
                             @guest
 
                             @else
                                 <!-- Modal Edit -->
                                 <td>
-                                    <button type="button" class="btn btn-warning text-white" data-toggle="modal" data-target="#Modal{{$key}}">Edit</button>
+                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Modal{{$key}}">Edit</button>
                                     <div class="modal fade" id="Modal{{$key}}" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -122,8 +122,8 @@
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control" id="memberRole" name="role" placeholder="Role" value="{{$member->role}}">
-                                                            @error('role')
+                                                            <input type="text" class="form-control" id="memberPosition" name="position" placeholder="Position" value="{{$member->position}}">
+                                                            @error('position')
                                                                 <small class="help-block text-danger">{{$message}}</small>
                                                             @enderror
                                                         </div>

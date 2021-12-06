@@ -11303,25 +11303,35 @@ body {
 #app .btn-basic {
   border-radius: 30px;
   padding: 10px 45px;
-  background-color: #4142f2;
-  border: none;
-  box-shadow: #4142f291 0px 8px 24px;
+  background-color: white;
+  border: 3px solid #4142f2;
   transition: 0.3s ease;
   display: block;
   margin: 0 auto 20px;
   width: 180px;
+  color: #4142f2;
+  z-index: 1;
+  position: relative;
 }
 #app .btn-basic:hover {
-  background-color: #f27f41;
-  box-shadow: #f27f41 0px 8px 24px;
+  background-color: #4142f2;
+  color: white;
 }
 #app .btn-edit {
+  border: 3px solid #e7b733;
+  color: #e7b733;
+}
+#app .btn-edit:hover {
   background-color: #e7b733;
-  box-shadow: #e7b733 0px 8px 24px;
+  color: white;
 }
 #app .btn-remove {
+  border: 3px solid #e22b2b;
+  color: #e22b2b;
+}
+#app .btn-remove:hover {
   background-color: #e22b2b;
-  box-shadow: #e22b2b 0px 8px 24px;
+  color: white;
 }
 #app .form-control-search {
   border: none;
@@ -11332,27 +11342,47 @@ body {
 #app .btn-search {
   border-radius: 3px;
   padding: 10px 15px;
+  background-color: #4142f2;
+  color: white;
 }
 #app .card {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border: none;
   transition: 0.3s ease;
 }
-#app .card:hover {
-  transform: translateY(-15px);
+#app .card:hover .card-body::before {
+  bottom: -40px;
+  height: 90%;
+  transform: skewY(10deg);
 }
 #app .card-body {
   text-align: center;
-  padding: 40px 20px;
+  padding: 0px 20px 40px;
+  transition: 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+#app .card-body::before {
+  content: "";
+  position: absolute;
+  bottom: -35px;
+  left: 0;
+  width: 100%;
+  height: 55%;
+  background-color: #132552;
+  transform: skewY(3deg);
+  transition: 0.3s ease-in-out;
 }
 #app .card-title {
   margin-bottom: 30px;
+  font-size: 30px;
 }
 #app .app-background {
   background-image: url(https://www.kindpng.com/picc/m/670-6701093_abstract-running-transparent-background-colored-sports-vector-png.png);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: left;
+  background-color: #e9e9e9;
   position: fixed;
   top: 0;
   left: 0;

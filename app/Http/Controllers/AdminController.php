@@ -41,4 +41,14 @@ class AdminController extends Controller
         }
         return response()->json(['status' => false, 'message' => 'Delete fail']);
     } 
+
+    public function updateUser(Request $request) {
+        if (User::where('id', $request->all()['id'])->update($request->all())) {
+            return response()->json([
+                'status' => true, 
+                'message' => 'Update successfully',
+            ]);
+        }
+        return response()->json(['status' => false, 'message' => 'Update fail']);
+    } 
 }

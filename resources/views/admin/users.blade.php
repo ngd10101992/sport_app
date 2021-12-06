@@ -32,13 +32,13 @@
                     @foreach($users as $key=>$user)
                         <tr id="user-{{$user->id}}">
                             <th scope="row">{{$key}}</th>
-                            <td>{{$user->name}}</td>
-                            <td>{{$user->phone}}</td>
-                            <td>{{$user->email}}</td>
-                            <td>{{$user->role == 1 ? 'Admin' : 'User'}}</td>
+                            <td class="td-info" data-name="name">{{$user->name}}</td>
+                            <td class="td-info" data-name="phone">{{$user->phone}}</td>
+                            <td class="td-info" data-name="name">{{$user->email}}</td>
+                            <td class="td-info" data-name="role">{{$user->role == 1 ? 'Admin' : 'User'}}</td>
                             <!-- Modal Edit -->
                             <td>
-                                <button type="button" class="btn btn-warning text-white" data-toggle="modal" data-target="#Modal{{$key}}">Edit</button>
+                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Modal{{$key}}">Edit</button>
                                 <div class="modal fade" id="Modal{{$key}}" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -79,7 +79,7 @@
                                                         @enderror
                                                     </div>
 
-                                                    <button type="submit" class="btn btn-primary btn-update" data-element-id="user-{{$user->id}}">Update</button>
+                                                    <button type="submit" class="btn btn-primary btn-update" data-element-id="user-{{$user->id}}" data-url="{{ route('admin.users.update') }}">Update</button>
                                                 </form>
                                             </div>
                                         </div>

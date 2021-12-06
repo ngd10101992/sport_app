@@ -27,7 +27,7 @@
                         <h5 class="card-title td-info" data-name="name">{{$team->name}}</h5>
                         <a href="{{ route('user.members.show', [Auth::user()->id, $team->id]) }}" class="btn btn-info btn-basic">Member</a>
                         <!-- Modal Edit -->
-                        <button type="button" class="btn btn-warning text-white btn-basic btn-edit" data-toggle="modal" data-target="#editModal">Edit</button>
+                        <button type="button" class="btn btn-warning btn-basic btn-edit" data-toggle="modal" data-target="#editModal">Edit</button>
                         <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
