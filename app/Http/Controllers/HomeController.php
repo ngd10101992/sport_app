@@ -19,7 +19,7 @@ class HomeController extends Controller
 
     public function getTeamsBySlug(Request $request) {
         $slug = $this->createSlug($request->all()['search']);
-        $teams = Team::where('slug', $slug)->get();
+        $teams = Team::where('slug', 'like', '%' . $slug . '%')->get();
         return view('home', compact('teams'));
     }
 }
