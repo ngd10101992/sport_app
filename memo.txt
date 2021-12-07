@@ -30,13 +30,6 @@ Liệt kê thông tin thành viên trong nhóm trên trang chi tiết của nhó
 6. Chức năng đầu ra CSV của thông tin nhóm
 Có thể xuất thông tin nhóm sang CSV
 
-sự chỉ rõ
-Khung: Laravel 8
-DB: MySQL hoặc MariaDB
-ENV: Đám mây Docker, xampp, Linux, AWS, v.v. có thể là bất cứ thứ gì.
-Nhận xét: Sử dụng Eloquent cho các truy vấn.
-
-
 練習プロジェクト
 
 Project: スポーツチームリスト登録システム

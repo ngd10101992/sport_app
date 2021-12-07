@@ -24,7 +24,10 @@ class TeamAddRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:teams'
+            'name' => 'required|unique:teams',
+            'age' => 'required',
+            'number' => 'required',
+            'postion' => 'required'
         ];
     }
 
