@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +28,7 @@ Route::get('teams/export/{id}', [App\Http\Controllers\TeamController::class, 'ex
 
 Route::post('teams', [App\Http\Controllers\HomeController::class, 'getTeamsBySlug'])->name('teams.search');
 
-Route::group(['prefix' => 'admin','middleware'=> 'auth', 'middleware'=> 'role'], function() {
+Route::group(['prefix' => 'admin','middleware'=> 'auth', 'middleware'=>'verified', 'middleware'=> 'role'], function() {
     Route::get('/', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
     Route::get('teams/', [App\Http\Controllers\AdminController::class, 'getTeams'])->name('admin.teams.show');
     Route::get('users/', [App\Http\Controllers\AdminController::class, 'getUsers'])->name('admin.users.show');
@@ -38,7 +40,7 @@ Route::group(['prefix' => 'admin','middleware'=> 'auth', 'middleware'=> 'role'],
     Route::put('users', [App\Http\Controllers\AdminController::class, 'updateUser'])->name('admin.users.update');
 });
 
-Route::group(['prefix' => 'users','middleware'=>'auth'], function() {
+Route::group(['prefix' => 'users','middleware'=>'auth', 'middleware'=>'verified'], function() {
     Route::get('{userId}/teams/', [App\Http\Controllers\UserController::class, 'getTeams'])->name('user.teams.show');
     Route::get('{userId}/teams/{teamId}', [App\Http\Controllers\TeamController::class, 'getMembers'])->name('user.members.show');
     Route::get('{userId}/profile', [App\Http\Controllers\UserController::class, 'profile'])->name('user.profile');
@@ -55,3 +57,19 @@ Route::group(['prefix' => 'users','middleware'=>'auth'], function() {
     Route::put('profiles', [App\Http\Controllers\UserController::class, 'update'])->name('user.profiles.update');
     Route::put('password', [App\Http\Controllers\UserController::class, 'updatePassword'])->name('user.password.update');
 });
+
+// Handle register virify email
+Route::get('/email/verify', function () {
+    return view('auth.verify');
+})->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+    return redirect('/');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.resend');
