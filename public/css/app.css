@@ -11345,6 +11345,9 @@ body {
   background-color: #4142f2;
   color: white;
 }
+#app .card-basic .card-body {
+  padding: 40px 20px 40px;
+}
 #app .card-basic .card-body::before {
   content: none;
 }

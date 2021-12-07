@@ -28,7 +28,7 @@ Route::get('teams/export/{id}', [App\Http\Controllers\TeamController::class, 'ex
 
 Route::post('teams', [App\Http\Controllers\HomeController::class, 'getTeamsBySlug'])->name('teams.search');
 
-Route::group(['prefix' => 'admin','middleware'=> 'auth', 'middleware'=>'verified', 'middleware'=> 'role'], function() {
+Route::group(['prefix' => 'admin','middleware'=> 'auth', 'middleware'=> 'role', 'middleware'=>'verified'], function() {
     Route::get('/', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
     Route::get('teams/', [App\Http\Controllers\AdminController::class, 'getTeams'])->name('admin.teams.show');
     Route::get('users/', [App\Http\Controllers\AdminController::class, 'getUsers'])->name('admin.users.show');
