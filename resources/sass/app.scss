@@ -1,5 +1,6 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
 @font-face {
     font-family: 'Blackpast';
     src: url('/fonts/Blackpast.ttf');
@@ -17,15 +18,18 @@ body {
 }
 
 #app {
+
     // background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) , rgba(255,255,255,0.5)), url(https://images5.alphacoders.com/324/thumb-1920-324019.jpg);
     // background-repeat: no-repeat;
     // background-size: cover;
     // background-position: center;\
-    .show-error, .show-success {
+    .show-error,
+    .show-success {
         display: none;
         font-size: 20px;
         margin-bottom: 10px;
     }
+
     .btn-basic {
         border-radius: 30px;
         padding: 10px 45px;
@@ -39,51 +43,62 @@ body {
         color: $btn-background;
         z-index: 1;
         position: relative;
+
         &:hover {
             background-color: $btn-background;
             color: white;
         }
     }
+
     .btn-edit {
         border: 3px solid #e7b733;
         color: #e7b733;
+
         &:hover {
-            background-color: #e7b733;
+            background-color: #e7b734;
             color: white;
         }
     }
+
     .btn-remove {
         border: 3px solid #e22b2b;
         color: #e22b2b;
+
         &:hover {
             background-color: #e22b2b;
             color: white;
         }
     }
+
     .form-control-search {
         border: none;
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
         height: 55px;
         padding-left: 35px;
     }
+
     .btn-search {
         border-radius: 3px;
         padding: 10px 15px;
         background-color: $btn-background;
         color: white;
     }
+
     .card-basic {
         .card-body {
             padding: 40px 20px 40px;
+
             &::before {
                 content: none;
             }
         }
     }
+
     .card {
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         border: none;
         transition: 0.3s ease;
+
         &:hover {
             .card-body {
                 &::before {
@@ -94,16 +109,18 @@ body {
             }
         }
     }
+
     .card-body {
         text-align: center;
         padding: 0px 20px 40px;
         transition: 0.3s ease-in-out;
         position: relative;
         overflow: hidden;
+
         &::before {
             content: '';
             position: absolute;
-            bottom: -35px   ;
+            bottom: -35px;
             left: 0;
             width: 100%;
             height: 55%;
@@ -112,11 +129,13 @@ body {
             transition: 0.3s ease-in-out;
         }
     }
+
     .card-title {
         margin-bottom: 30px;
         font-size: 30px;
     }
-    .app-background  {
+
+    .app-background {
         // background-image: linear-gradient(to bottom, rgba(255,255,255,0.5) , rgba(255,255,255,0.2)), url(https://images5.alphacoders.com/324/thumb-1920-324019.jpg);
         background-image: url(https://www.kindpng.com/picc/m/670-6701093_abstract-running-transparent-background-colored-sports-vector-png.png);
         background-repeat: no-repeat;
@@ -130,6 +149,7 @@ body {
         height: 100%;
         z-index: -1;
     }
+
     .page-title {
         text-align: center;
         font-size: 65px;
@@ -139,6 +159,7 @@ body {
         letter-spacing: 5px;
         font-weight: 500;
     }
+
     .navbar {
         position: fixed;
         width: 100%;
@@ -146,6 +167,7 @@ body {
         left: 0;
         z-index: 9;
         transition: 0.7s ease-in-out;
+
         .navbar-brand {
             font-family: Blackpast;
             font-size: 36px;
@@ -153,11 +175,13 @@ body {
             letter-spacing: 3px;
             color: $primary;
             transition: 0.3s;
+
             &:hover {
                 color: $second;
             }
-            
+
         }
+
         .navbar-nav {
             .nav-link {
                 font-size: 24px;
@@ -166,6 +190,7 @@ body {
                 font-weight: 700;
                 color: $primary;
                 position: relative;
+
                 &::before {
                     content: '';
                     position: absolute;
@@ -177,25 +202,28 @@ body {
                     transition: 0.2s ease-in;
                     transform: scale(0);
                 }
+
                 &:hover {
                     &::before {
                         transform: scale(1);
                     }
                 }
             }
+
             .user-link {
                 color: $black;
                 font-size: 16px;
+
                 &::before {
                     content: none;
                 }
             }
         }
     }
+
     .main {
         padding-top: 300px;
         padding-bottom: 70px;
         min-height: 100vh;
     }
 }
-
